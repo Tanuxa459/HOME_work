@@ -7,8 +7,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class PracticeFormTest {
@@ -19,14 +18,14 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // default 4000
     }
 
     @Test
-    void fillPracticeForm() {
-        Configuration.pageLoadStrategy="eager";
+    void fillPracticeFormTest() {
+
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Pushkin");
         $(byText("Male")).click();
@@ -36,14 +35,24 @@ public class PracticeFormTest {
         $(".react-datepicker__day--012").click();
         $("#currentAddress").setValue("Another address");
         $("#subjectsInput").setValue("Maths").pressEnter();
-        $(byText("Sports")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/Test.jpg"));
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#uploadPicture").uploadFromClasspath("Test.jpg");
         $("#react-select-3-input").setValue("ncr").pressEnter();
         $("#react-select-4-input").setValue("delhi").pressEnter();
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Alex Pushkin"), text("run@bk.com"),text("Male"),text("8495777777"),text("12 November,2024"),text("Maths"),text("Sports"),text("Test.jpg"),text("Another address"), text("Another address"),text("NCR Delhi"));
+        $(".table").$(byText("Student Name")).sibling(0).shouldHave(text("Alex Pushkin"));
+        $(".table").$(byText("Student Email")).sibling(0).shouldHave(text("run@bk.com"));
+        $(".table").$(byText("Gender")).sibling(0).shouldHave(text("Male"));
+        $(".table").$(byText("Mobile")).sibling(0).shouldHave(text("8495777777"));
+        $(".table").$(byText("Date of Birth")).sibling(0).shouldHave(text("12 November,2024"));
+        $(".table").$(byText("Subjects")).sibling(0).shouldHave(text("Maths"));
+        $(".table").$(byText("Hobbies")).sibling(0).shouldHave(text("Sports"));
+        $(".table").$(byText("Picture")).sibling(0).shouldHave(text("Test.jpg"));
+        $(".table").$(byText("Address")).sibling(0).shouldHave(text("Another address"));
+        $(".table").$(byText("State and City")).sibling(0).shouldHave(text("NCR Delhi"));
+
         $("#closeLargeModal").click();
     }
 }
