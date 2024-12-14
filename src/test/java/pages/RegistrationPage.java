@@ -29,11 +29,7 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
-        return this;
+          return this;
     }
 
     public RegistrationPage setFirstName(String value) {
@@ -109,6 +105,11 @@ public class RegistrationPage {
     }
     public RegistrationPage checkUnsuccessPageWithTable() {
         buttonSubmit.isEnabled();
+        return this;
+    }
+        public RegistrationPage removeBanner () {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         return this;
     }
 
