@@ -9,11 +9,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TableOfDataPage {
 
-    private final static String title = "Thanks for submitting the form";
+    private final static String TITLE = "Thanks for submitting the form";
     private SelenideElement titleOfPage = $("#example-modal-sizes-title-lg");
 
     public TableOfDataPage checkSuccessPageWithTable() {
-        titleOfPage.shouldHave(text(title));
+        titleOfPage.shouldHave(text(TITLE));
         return this;
     }
 
