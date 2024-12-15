@@ -15,6 +15,7 @@ public class PracticeFormWithPageObjectTest extends TestBase{
     @Test
     void successfulRegistrationTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Filipp")
                 .setLastName("Fillipov")
                 .setEmail("fil@bk.com")
@@ -45,6 +46,7 @@ public class PracticeFormWithPageObjectTest extends TestBase{
     @Test
     void negativeEmailTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName(" ")
                 .setLastName(" ")
                 .setEmail("email")
@@ -64,6 +66,7 @@ public class PracticeFormWithPageObjectTest extends TestBase{
     @Test
     void minDataTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Alex")
                 .setLastName("Fippov")
                 .setGender("Male")
