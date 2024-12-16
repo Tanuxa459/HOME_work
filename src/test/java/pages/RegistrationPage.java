@@ -1,7 +1,7 @@
 package pages;
 import pages.components.CalendarComponent;
 
-import com.codeborne.selenide.Configuration;
+
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
                             lastNameInput = $("#lastName"),
                             genderWrapper   = $("#genterWrapper"),
                             inputEmail =  $("#userEmail"),
@@ -29,10 +29,6 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        //$(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-
         return this;
     }
 
@@ -111,6 +107,10 @@ public class RegistrationPage {
         buttonSubmit.isEnabled();
         return this;
     }
-
+    public RegistrationPage removeBanner () {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
 
 }
