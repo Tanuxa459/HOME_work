@@ -30,6 +30,7 @@ public class PracticeFormAllureAttach extends TestBase {
                     executeJavaScript("$('#fixedban').remove()");
                     executeJavaScript("$('footer').remove()");
                 });
+
         step("Fill form", () -> {
             $("#firstName").setValue("Alex");
             $("#lastName").setValue("Pushkin");
@@ -46,6 +47,7 @@ public class PracticeFormAllureAttach extends TestBase {
             $("#react-select-4-input").setValue("delhi").pressEnter();
             $("#submit").click();
                 });
+
         step("Check form", () -> {
             $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
             $(".table").$(byText("Student Name")).sibling(0).shouldHave(text("Alex Pushkin"));
