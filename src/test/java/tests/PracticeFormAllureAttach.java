@@ -16,10 +16,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class PracticeFormAllureAttach extends TestBase {
 
 
-
+    @Tag("Form")
     @DisplayName("Заполнение формы")
     @Test
-    @Tag("practiceForm")
     void fillPracticeFormTest() {
 
         step("Open form", () -> {
@@ -63,7 +62,7 @@ public class PracticeFormAllureAttach extends TestBase {
         });
     }
 
-    @Tag("practiceForm")
+    @Tag("Form")
     @DisplayName("Тест на ввод минимального набора данных")
     @Test
 
