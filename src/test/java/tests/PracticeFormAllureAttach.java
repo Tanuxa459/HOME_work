@@ -1,10 +1,9 @@
 package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import helpers.Attach;
+import org.junit.jupiter.api.*;
+
 import static io.qameta.allure.Allure.step;
 
 
@@ -15,11 +14,18 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormAllureAttach extends TestBase {
 
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
 
+    }
 
+    @Tag("Form")
     @DisplayName("Заполнение формы")
     @Test
-    @Tag("practiceForm")
     void fillPracticeFormTest() {
 
         step("Open form", () -> {
@@ -63,7 +69,7 @@ public class PracticeFormAllureAttach extends TestBase {
         });
     }
 
-    @Tag("practiceForm")
+    @Tag("Form")
     @DisplayName("Тест на ввод минимального набора данных")
     @Test
 
