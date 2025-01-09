@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormAllureAttach extends TestBase {
 
+
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");
