@@ -16,14 +16,14 @@ public class TestBase {
     static void setup() {
 
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+
         Configuration.pageLoadStrategy = "eager";
 
         String remoteHost = System.getProperty("remoteHost", "host");
         Configuration.remote = "https://user1:1234@" + remoteHost + "/wd/hub";
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "114");
-
+        Configuration.browserSize = System.getProperty("browserSize", "1920×1080");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
