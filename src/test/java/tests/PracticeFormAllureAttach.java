@@ -15,6 +15,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormAllureAttach extends TestBase {
 
+    @BeforeEach
+    void listebner(){
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
 
 
     @AfterEach
